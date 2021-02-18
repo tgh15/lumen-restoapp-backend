@@ -45,3 +45,6 @@ $router->put('menus/{id}', 'MenuController@update');
 $router->delete('menus/{id}', 'MenuController@destroy');
 $router->get('menus', 'MenuController@index');
 $router->get('menus/{id}', 'MenuController@show');
+
+$router->put('menu-pic/{id}', 'MenuPictureController@update');
+$router->delete('menu-pic/{id}', 'MenuPictureController@destroy');

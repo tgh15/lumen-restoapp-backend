@@ -37,7 +37,7 @@ class MenuCategory extends Model
     public function showCategory($id){
         try {
             //code...
-            $data = $this->findOrFail($id)->with(['menu' => function($query){
+            $data = $this->where('id', $id)->with(['menu' => function($query){
                 $query->with('picture');
             }])->get();
             return $data;

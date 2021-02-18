@@ -19,12 +19,13 @@ class MenuResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            // 'category' => MenuCategory::where('id', $this->menu_category_id)->get()[0],
+            'category' => $this->category_name,
             'price' => $this->price,
             'description' => $this->description,
-            'created_at' => $this->created_at,
             'status' => $this->status,
-            'pictures' => PicturesResource::collection($this->picture)
-            // 'category' => MenuCategory::where('id', $this->menu_category_id)->get()[0]
+            'created_at' => $this->created_at,
+            'pictures' => PicturesResource::collection($this->picture),
         ];
     }
 }

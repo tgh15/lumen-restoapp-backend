@@ -17,4 +17,25 @@ class MenuPicture extends Model
     public function menu(){
         return $this->belongsTo(Menu::class);
     }
+
+    public function updatePic($request, $id){
+        try {
+            //code...
+            $data = $this->findOrFail($id);
+            $data->url = $request->url;
+            $data->getDirty();
+            $data->save();
+            return $data;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    public function destroyPic($id){
+        try {
+            return $this->findOrFail($id)->delete(); 
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
 }

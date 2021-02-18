@@ -50,7 +50,7 @@ class Menu extends Model
 
     public function showMenu($id){
         try {
-            $data = $this->findOrFail($id)->with('picture')->get();
+            $data = $this->where('id', $id)->with('picture')->get();
             return $data;
             //code...
         } catch (\Throwable $th) {
@@ -75,12 +75,6 @@ class Menu extends Model
             'status' => $request->status,
             'menu_category_id' => $request->menu_category_id,
         ]);
-        foreach ($request->pictures as $picture) {
-            $pic = MenuPicture::firstOrNew(['id' => $picture['id']] );
-            $pic->url = $picture['url'];
-            $pic->menu_id = $id;
-            $pic->save();
-        };
         return true;
     }
 }

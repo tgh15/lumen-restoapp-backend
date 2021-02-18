@@ -34,9 +34,9 @@ class MenuController extends Controller
 
     public function show($id){
         if ($data = $this->menu->showMenu($id)) {
-            $response = MenuResource::collection($data);
+            // $response = MenuResource::collection($data);
             $success_message = "get menu successfully";
-            return $this->utilityService->is200ResponseWithData($success_message, $response);
+            return $this->utilityService->is200ResponseWithData($success_message, $data);
         }
         $message = "menu not found";
         return $this->utilityService->is404Response($message);
